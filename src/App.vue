@@ -1,36 +1,37 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+
+const route = useRoute();
+
 </script>
 
 <template>
   <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">About</RouterLink>
+    <h2>Creativity Trainer</h2>
+    <div id="routerElements">
+      <RouterLink to="/" :disabled="route.path === '/'">Home</RouterLink>
+      <RouterLink to="/about" :disabled="route.path === '/about'">About</RouterLink>
+    </div>
   </nav>
 
   <RouterView />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
 nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: start;
   width: 100%;
   font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
+  margin: 1.4rem 0;
 }
 
 nav a.router-link-exact-active {
   color: var(--color-text);
+  text-decoration: underline;
 }
 
 nav a.router-link-exact-active:hover {
@@ -41,10 +42,18 @@ nav a {
   display: inline-block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
+  font-size: 1.4rem;
 }
 
 nav a:first-of-type {
   border: 0;
+}
+
+@media (min-width: 620px) {
+  #routerElements {
+    position: absolute;
+    justify-self: center;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -52,16 +61,6 @@ nav a:first-of-type {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
   }
 
   nav {

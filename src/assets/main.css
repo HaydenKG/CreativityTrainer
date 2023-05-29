@@ -1,17 +1,29 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  --green: hsla(160, 100%, 37%, 1);
+  --purple: #9F13BD;
+  --gold: #BD8D13;
+}
 
-  font-weight: normal;
+body {
+  display: flex;
+  place-items: center;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: .1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+  padding: 0 max(2rem, 10%);
+  margin: 0 auto;
 }
 
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: var(--green);
   transition: 0.4s;
 }
 
@@ -20,26 +32,18 @@ a,
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 30%;
+}
+
+.purple{
+  color: var(--purple);
+}
+
+.gold{
+  color: var(--gold);
 }
 
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-rows: .1fr 1fr;
-    height: 100vh;
-    width: 100vw;
-    padding: 0 max(2rem, 20%);
   }
 }
